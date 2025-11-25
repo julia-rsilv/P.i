@@ -1,0 +1,845 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Winter Books - Início</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --cor-primaria: #8050ad;      /* Rosa violeta vibrante */
+            --cor-secundaria: #f5f3f3;    /* Rosa bebê */
+            --cor-terciaria: #64748b;     /* Cinza azulado neutro */
+            --cor-texto: #8050ad;         /* Texto escuro */
+            --cor-fundo: #fafafa;         /* Fundo off-white */
+            --cor-branco: #ffffff;
+            --sombra: 0 4px 10px rgba(0, 0, 0, 0.08);
+            --transicao: all 0.3s ease;
+            --tamanho-fonte: 16px;
+        }
+
+        /* Modo Escuro */
+        .modo-escuro {
+            --cor-primaria: #9d70d0;
+            --cor-secundaria: #2d2d2d;
+            --cor-terciaria: #94a3b8;
+            --cor-texto: #8a8a8a;
+            --cor-fundo: #1a1a1a;
+            --cor-branco: #2d2d2d;
+        }
+
+        /* Tamanhos de Fonte */
+        .fonte-pequena {
+            --tamanho-fonte: 14px;
+        }
+
+        .fonte-grande {
+            --tamanho-fonte: 18px;
+        }
+
+        .fonte-muito-grande {
+            --tamanho-fonte: 20px;
+        }
+
+        body {
+            background-color: var(--cor-fundo);
+            color: var(--cor-texto);
+            line-height: 1.6;
+            overflow-x: hidden;
+            font-size: var(--tamanho-fonte);
+            transition: var(--transicao);
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Menu de Acessibilidade */
+        .menu-acessibilidade {
+            background-color: var(--cor-branco);
+            padding: 8px 0;
+            border-bottom: 1px solid var(--cor-secundaria);
+            box-shadow: var(--sombra);
+        }
+
+        .menu-acessibilidade .container {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .controles-acessibilidade {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            flex-wrap: wrap;
+            justify-content: flex-end;
+        }
+
+        .botao-acessibilidade {
+            background: var(--cor-branco);
+            border: 2px solid var(--cor-primaria);
+            padding: 6px 12px;
+            border-radius: 20px;
+            cursor: pointer;
+            color: var(--cor-primaria);
+            font-size: 14px;
+            font-weight: 600;
+            transition: var(--transicao);
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .botao-acessibilidade:hover {
+            background-color: var(--cor-primaria);
+            color: var(--cor-branco);
+            transform: translateY(-2px);
+        }
+
+        .botao-acessibilidade:active {
+            transform: translateY(0);
+        }
+
+        /* Cabeçalho */
+        .cabecalho {
+            background-color: var(--cor-branco);
+            box-shadow: var(--sombra);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .cabecalho .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 15px 20px;
+        }
+
+        .logo img {
+            height: 70px;
+            width: auto;
+            transition: var(--transicao);
+        }
+
+        .logo a:hover img {
+            transform: scale(1.05);
+        }
+
+        /* Menu principal */
+        .menu-principal ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        .menu-principal a {
+            text-decoration: none;
+            color: var(--cor-texto);
+            font-weight: 600;
+            font-size: 16px;
+            transition: var(--transicao);
+            position: relative;
+            padding: 5px 0;
+        }
+
+        .menu-principal a:hover,
+        .menu-principal a.ativo {
+            color: var(--cor-primaria);
+        }
+
+        .menu-principal a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--cor-primaria);
+            transition: var(--transicao);
+        }
+
+        .menu-principal a:hover::after,
+        .menu-principal a.ativo::after {
+            width: 100%;
+        }
+
+        .icone-login img {
+            height: 50px;
+            width: auto;
+            transition: var(--transicao);
+        }
+
+        .icone-login a:hover img {
+            transform: scale(1.1);
+        }
+
+        /* Seção de apresentação com animação de neve */
+        .secao-apresentacao {
+            position: relative;
+            padding: 80px 0;
+            overflow: hidden;
+            background: linear-gradient(135deg, #f5f7fa 0%, #ffffff 100%);
+            min-height: 70vh;
+            display: flex;
+            align-items: center;
+        }
+
+        .modo-escuro .secao-apresentacao {
+            background: linear-gradient(135deg, #2d3748 0%, #4a5568 100%);
+        }
+
+        .elementos-decorativos {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .circulo-roxo {
+            position: absolute;
+            top: -100px;
+            right: -100px;
+            width: 400px;
+            height: 400px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--cor-primaria) 0%, #6b46c1 100%);
+            opacity: 0.1;
+        }
+
+        .circulo-rosa {
+            position: absolute;
+            bottom: -150px;
+            left: -150px;
+            width: 500px;
+            height: 500px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--cor-secundaria) 0%, #ff6b95 100%);
+            opacity: 0.1;
+        }
+
+        .texto-apresentacao {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .texto-apresentacao h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            color: var(--cor-primaria);
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .texto-apresentacao p {
+            font-size: 1.5rem;
+            color: var(--cor-texto);
+            line-height: 1.8;
+            margin-bottom: 30px;
+        }
+
+        /* Animação de neve */
+        .snow-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 2;
+            pointer-events: none;
+        }
+
+        .snowflake {
+            position: absolute;
+            top: -10px;
+            color: #a8d0e6;
+            font-size: 1.5em;
+            opacity: 0.8;
+            animation: fall linear forwards;
+        }
+
+        @keyframes fall {
+            to {
+                transform: translateY(100vh);
+            }
+        }
+
+        /* Botão buscar */
+        .botao-buscar {
+            background-color: var(--cor-primaria);
+            color: var(--cor-branco);
+            border: none;
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transicao);
+        }
+
+        .botao-buscar:hover {
+            background-color: var(--cor-terciaria);
+            transform: translateY(-2px);
+        }
+
+        /* Seções de conteúdo */
+        .secao-conteudo {
+            padding: 60px 0;
+        }
+
+        .titulo-secao {
+            text-align: center;
+            font-size: 2.5rem;
+            color: var(--cor-primaria);
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        .titulo-secao::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background-color: var(--cor-secundaria);
+        }
+
+        .grid-livros {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .card-livro {
+            background-color: var(--cor-branco);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--sombra);
+            transition: var(--transicao);
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+
+        .card-livro:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .card-livro img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+
+        .info-livro {
+            padding: 20px;
+        }
+
+        .info-livro h3 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            color: var(--cor-primaria);
+        }
+
+        .info-livro p {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 15px;
+        }
+
+        .avaliacao {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .estrelas {
+            color: #ffc107;
+            margin-right: 10px;
+        }
+
+        .botao-ver-mais {
+            background-color: var(--cor-primaria);
+            color: var(--cor-branco);
+            border: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: var(--transicao);
+            width: 100%;
+        }
+
+        .botao-ver-mais:hover {
+            background-color: var(--cor-terciaria);
+        }
+
+        /* Rodapé */
+        .rodape {
+            background-color: var(--cor-texto);
+            color: var(--cor-branco);
+            padding: 40px 0 20px;
+        }
+
+        .conteudo-rodape {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 30px;
+        }
+
+        .coluna-rodape h3 {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            color: var(--cor-secundaria);
+        }
+
+        .coluna-rodape ul {
+            list-style: none;
+        }
+
+        .coluna-rodape ul li {
+            margin-bottom: 10px;
+        }
+
+        .coluna-rodape ul li a {
+            color: #ccc;
+            text-decoration: none;
+            transition: var(--transicao);
+        }
+
+        .coluna-rodape ul li a:hover {
+            color: var(--cor-branco);
+        }
+
+        .campo-busca {
+            display: flex;
+            max-width: 400px;
+        }
+
+        .campo-busca input {
+            flex: 1;
+            padding: 10px 15px;
+            border: 2px solid var(--cor-primaria);
+            border-radius: 50px 0 0 50px;
+            font-size: 14px;
+            outline: none;
+            transition: var(--transicao);
+            background-color: var(--cor-branco);
+            color: var(--cor-texto);
+        }
+
+        .campo-busca input:focus {
+            border-color: var(--cor-secundaria);
+        }
+
+        .campo-busca .botao-buscar {
+            border-radius: 0 50px 50px 0;
+            padding: 10px 20px;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            color: #aaa;
+        }
+
+        /* Responsividade */
+        @media (max-width: 992px) {
+            .texto-apresentacao h1 {
+                font-size: 2.8rem;
+            }
+            
+            .texto-apresentacao p {
+                font-size: 1.3rem;
+            }
+            
+            .titulo-secao {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .texto-apresentacao h1 {
+                font-size: 2.2rem;
+            }
+            
+            .texto-apresentacao p {
+                font-size: 1.1rem;
+            }
+            
+            .titulo-secao {
+                font-size: 1.8rem;
+            }
+            
+            .grid-livros {
+                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            }
+
+            .controles-acessibilidade {
+                justify-content: center;
+            }
+
+            .menu-acessibilidade .container {
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .cabecalho .container {
+                padding: 10px 15px;
+            }
+            
+            .logo img {
+                height: 40px;
+            }
+            
+            .secao-apresentacao {
+                padding: 60px 0;
+            }
+            
+            .texto-apresentacao h1 {
+                font-size: 1.8rem;
+            }
+            
+            .titulo-secao {
+                font-size: 1.5rem;
+            }
+            
+            .grid-livros {
+                grid-template-columns: 1fr;
+            }
+
+            .controles-acessibilidade {
+                gap: 5px;
+            }
+
+            .botao-acessibilidade {
+                padding: 4px 8px;
+                font-size: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Menu de Acessibilidade -->
+    <div class="menu-acessibilidade">
+        <div class="container">
+            <div class="controles-acessibilidade">
+                <button class="botao-acessibilidade" id="alternar-modo">
+                    <span>🌙</span> Modo Escuro
+                </button>
+                <button class="botao-acessibilidade" id="aumentar-fonte">
+                    <span>A+</span> Aumentar Fonte
+                </button>
+                <button class="botao-acessibilidade" id="diminuir-fonte">
+                    <span>A-</span> Diminuir Fonte
+                </button>
+                <button class="botao-acessibilidade" id="resetar-acessibilidade">
+                    <span>↺</span> Resetar
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <header class="cabecalho">
+        <div class="container">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="img/logos/winter.png" alt="Winter Books Logo">
+                </a>
+            </div>
+            
+            <nav class="menu-principal">
+                <ul>
+                    <li><a href="index.html" class="ativo">INÍCIO</a></li>
+                    <li><a href="autores.html">AUTORES</a></li>
+                    <li><a href="mais-lidos.html">MAIS LIDOS</a></li>
+                    <li><a href="educacionais.html">EDUCACIONAIS</a></li>
+                    <li><a href="generos.html" class="generos-link">GÊNEROS</a></li>
+                </ul>
+            </nav>
+            
+            <div class="icone-login">
+                <a href="login.html">
+                    <img src="img/logos/login.png" alt="Login">
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main class="conteudo-principal">
+        <section class="secao-apresentacao">
+            <div class="elementos-decorativos">
+                <div class="circulo-roxo"></div>
+                <div class="circulo-rosa"></div>
+            </div>
+            
+            <div class="snow-container" id="snow-container"></div>
+            
+            <div class="container">
+                <div class="texto-apresentacao">
+                    <h1>Bem-vindo à Winter Books</h1>
+                    <p>Seu refúgio literário para descobrir, avaliar e compartilhar histórias incríveis. <br> Encontre sua próxima leitura favorita.</p>
+                    <button class="botao-buscar" style="border-radius: 50px; padding: 12px 30px; margin-top: 20px;">
+                        Explorar Livros
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- LIVROS EM DESTAQUE -->
+        <section class="secao-conteudo">
+            <div class="container">
+                <h2 class="titulo-secao">Livros em Destaque</h2>
+                <div class="grid-livros">
+
+                    <!-- Livro 1 -->
+                    <a href="sombra-do-vento.html" class="card-livro">
+                        <img src="img/livros/Ficção Científica/a sobra do vento.jfif" alt="A Sombra do Vento">
+                        <div class="info-livro">
+                            <h3>A Sombra do Vento</h3>
+                            <p>Carlos Ruiz Zafón</p>
+                            <div class="avaliacao">
+                                <div class="estrelas">★★★★☆</div>
+                                <span>4.2/5</span>
+                            </div>
+                            <button class="botao-ver-mais">Ver Detalhes</button>
+                        </div>
+                    </a>
+
+                    <!-- Livro 2 -->
+                    <a href="nome-do-vento.html" class="card-livro">
+                        <img src="img/livros/Fantasia/O nome do vento.jfif" alt="O Nome do Vento">
+                        <div class="info-livro">
+                            <h3>O Nome do Vento</h3>
+                            <p>Patrick Rothfuss</p>
+                            <div class="avaliacao">
+                                <div class="estrelas">★★★★★</div>
+                                <span>4.8/5</span>
+                            </div>
+                            <button class="botao-ver-mais">Ver Detalhes</button>
+                        </div>
+                    </a>
+
+                    <!-- Livro 3 -->
+                    <a href="1984.html" class="card-livro">
+                        <img src="img/livros/Ficção Científica/1984.jfif" alt="1984">
+                        <div class="info-livro">
+                            <h3>1984</h3>
+                            <p>George Orwell</p>
+                            <div class="avaliacao">
+                                <div class="estrelas">★★★★☆</div>
+                                <span>4.5/5</span>
+                            </div>
+                            <button class="botao-ver-mais">Ver Detalhes</button>
+                        </div>
+                    </a>
+
+                    <!-- Livro 4 -->
+                    <a href="OPequenoPríncipe.html" class="card-livro">
+                        <img src="img/livros/Infantil/pequeno principe.jfif" alt="O Pequeno Príncipe">
+                        <div class="info-livro">
+                            <h3>O Pequeno Príncipe</h3>
+                            <p>Antoine de Saint-Exupéry</p>
+                            <div class="avaliacao">
+                                <div class="estrelas">★★★★★</div>
+                                <span>4.9/5</span>
+                            </div>
+                            <button class="botao-ver-mais">Ver Detalhes</button>
+                        </div>
+                    </a>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- RESTANTE DO SEU CÓDIGO CONTINUA IGUAL... -->
+
+    </main>
+
+    <footer class="rodape">
+        <div class="container">
+            <div class="conteudo-rodape">
+                <div class="coluna-rodape">
+                    <h3>Winter Books</h3>
+                    <p>Sua plataforma para descobrir, avaliar e compartilhar livros incríveis.</p>
+                </div>
+
+                <div class="coluna-rodape">
+                    <h3>Suporte</h3>
+                    <ul>
+                        <li><a href="ajuda.html">Ajuda</a></li>
+                        <li><a href="contato.html">Contato</a></li>
+                        <li><a href="politica.html">Política de Privacidade</a></li>
+                        <li><a href="termos.html">Termos de Uso</a></li>
+                    </ul>
+                </div>
+                
+                <div class="coluna-rodape">
+                    <h3>Newsletter</h3>
+                    <div class="campo-busca" style="margin-top: 15px;">
+                        <input type="email" placeholder="Seu e-mail">
+                        <button class="botao-buscar">Inscrever</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Funções para o efeito de neve
+        function createSnowflake() {
+            const snowflake = document.createElement('div');
+            snowflake.classList.add('snowflake');
+            snowflake.innerHTML = '❄';
+            const startPositionX = Math.random() * 100;
+            snowflake.style.left = `${startPositionX}vw`;
+            snowflake.style.fontSize = `${Math.random() * 1.5 + 0.5}em`;
+            const animationDuration = Math.random() * 10 + 5;
+            snowflake.style.animationDuration = `${animationDuration}s`;
+            snowflake.style.opacity = Math.random() * 0.7 + 0.3;
+            document.getElementById('snow-container').appendChild(snowflake);
+            setTimeout(() => snowflake.remove(), animationDuration * 1000);
+        }
+        
+        function startSnowfall() {
+            setInterval(createSnowflake, 150);
+        }
+        
+        // Funções para acessibilidade
+        function alternarModo() {
+            document.body.classList.toggle('modo-escuro');
+            const botaoModo = document.getElementById('alternar-modo');
+            botaoModo.innerHTML = document.body.classList.contains('modo-escuro') 
+                ? '<span>☀️</span> Modo Claro' 
+                : '<span>🌙</span> Modo Escuro';
+            
+            // Salvar preferência
+            localStorage.setItem('modo-escuro', document.body.classList.contains('modo-escuro'));
+        }
+        
+        function aumentarFonte() {
+            const classesFonte = ['fonte-pequena', 'fonte-grande', 'fonte-muito-grande'];
+            let classeAtual = '';
+            
+            // Verificar qual classe de fonte está ativa
+            classesFonte.forEach(classe => {
+                if (document.body.classList.contains(classe)) {
+                    classeAtual = classe;
+                }
+            });
+            
+            // Remover classe atual
+            document.body.classList.remove(...classesFonte);
+            
+            // Aplicar próxima classe
+            if (classeAtual === 'fonte-pequena') {
+                document.body.classList.add('fonte-grande');
+            } else if (classeAtual === 'fonte-grande') {
+                document.body.classList.add('fonte-muito-grande');
+            } else if (!classeAtual) {
+                document.body.classList.add('fonte-grande');
+            } else {
+                document.body.classList.add('fonte-muito-grande');
+            }
+            
+            // Salvar preferência
+            const novaClasse = document.body.className.match(/fonte-(pequena|grande|muito-grande)/);
+            localStorage.setItem('tamanho-fonte', novaClasse ? novaClasse[0] : '');
+        }
+        
+        function diminuirFonte() {
+            const classesFonte = ['fonte-pequena', 'fonte-grande', 'fonte-muito-grande'];
+            let classeAtual = '';
+            
+            // Verificar qual classe de fonte está ativa
+            classesFonte.forEach(classe => {
+                if (document.body.classList.contains(classe)) {
+                    classeAtual = classe;
+                }
+            });
+            
+            // Remover classe atual
+            document.body.classList.remove(...classesFonte);
+            
+            // Aplicar classe anterior
+            if (classeAtual === 'fonte-muito-grande') {
+                document.body.classList.add('fonte-grande');
+            } else if (classeAtual === 'fonte-grande') {
+                document.body.classList.add('fonte-pequena');
+            } else if (!classeAtual) {
+                document.body.classList.add('fonte-pequena');
+            } else {
+                document.body.classList.add('fonte-pequena');
+            }
+            
+            // Salvar preferência
+            const novaClasse = document.body.className.match(/fonte-(pequena|grande|muito-grande)/);
+            localStorage.setItem('tamanho-fonte', novaClasse ? novaClasse[0] : '');
+        }
+        
+        function resetarAcessibilidade() {
+            // Remover todas as classes de acessibilidade
+            document.body.classList.remove('modo-escuro', 'fonte-pequena', 'fonte-grande', 'fonte-muito-grande');
+            
+            // Atualizar texto do botão de modo
+            document.getElementById('alternar-modo').innerHTML = '<span>🌙</span> Modo Escuro';
+            
+            // Limpar preferências salvas
+            localStorage.removeItem('modo-escuro');
+            localStorage.removeItem('tamanho-fonte');
+        }
+        
+        // Carregar preferências salvas
+        function carregarPreferencias() {
+            // Modo escuro
+            if (localStorage.getItem('modo-escuro') === 'true') {
+                document.body.classList.add('modo-escuro');
+                document.getElementById('alternar-modo').innerHTML = '<span>☀️</span> Modo Claro';
+            }
+            
+            // Tamanho da fonte
+            const tamanhoFonte = localStorage.getItem('tamanho-fonte');
+            if (tamanhoFonte) {
+                document.body.classList.add(tamanhoFonte);
+            }
+        }
+        
+        // Inicializar
+        window.addEventListener('load', () => {
+            startSnowfall();
+            carregarPreferencias();
+            
+            // Adicionar event listeners para os botões de acessibilidade
+            document.getElementById('alternar-modo').addEventListener('click', alternarModo);
+            document.getElementById('aumentar-fonte').addEventListener('click', aumentarFonte);
+            document.getElementById('diminuir-fonte').addEventListener('click', diminuirFonte);
+            document.getElementById('resetar-acessibilidade').addEventListener('click', resetarAcessibilidade);
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Winter Books - Mais Lidos</title>
+    <link rel="stylesheet" href="mais-lidos.css">
+</head>
+<body>
+    <header class="cabecalho">
+        <div class="container">
+            <div class="logo">
+                <a href="inicio.html">
+                    <img src="img/logos/winter.png" alt="Winter Books Logo">
+                </a>
+            </div>
+            
+            <nav class="menu-principal">
+                <ul>
+                    <li><a href="index.html">INÍCIO</a></li>
+                    <li><a href="autores.html">AUTORES</a></li>
+                    <li><a href="mais-lidos.html" class="ativo">MAIS LIDOS</a></li>
+                    <li><a href="educacionais.html">EDUCACIONAIS</a></li>
+                    <li><a href="generos.html" class="generos-link">GÊNEROS</a></li>
+                </ul>
+            </nav>
+            
+            <div class="icone-login">
+                <a href="login.html">
+                    <img src="img/logos/login.png" alt="Login">
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main class="conteudo-principal">
+        <section class="secao-apresentacao">
+            <div class="elementos-decorativos">
+                <div class="circulo-roxo"></div>
+                <div class="circulo-rosa"></div>
+            </div>
+            
+            <!-- Animação de neve -->
+            <div class="snow-container" id="snow-container"></div>
+            
+            <div class="container">
+                <div class="texto-apresentacao">
+                    <h1>Livros Mais Lidos</h1>
+                    <p>Descubra os livros mais populares em cada gênero. <br> Veja o que a comunidade Winter Books está lendo agora.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="secao-busca">
+            <div class="borda-neve-superior"></div>
+            
+            <div class="container">
+                <div class="campo-busca estilizada">
+                    <input type="text" placeholder="Pesquise por livro ou autor...">
+                    <button class="botao-buscar">Buscar</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="secao-conteudo">
+            <div class="container">
+                <h2 class="titulo-secao">Mais Lidos por Gênero</h2>
+            
+                
+                <div class="grid-generos">
+                    <!-- Gênero Romance -->
+                    <div class="card-genero" data-categoria="romance">
+                        <div class="cabecalho-genero">
+                            <h3>Romance</h3>
+                        </div>
+                        <div class="lista-livros">
+                            <div class="item-livro">
+                                <div class="posicao">1</div>
+                                <img src="img/livros/romance/É Assim que Acaba.jpg"Capa do livro" class="capa-livro">
+                                <div class="info-livro">
+                                    <h4>É Assim que Acaba</h4>
+                                    <p>Colleen Hoover</p>
+                                    <div class="avaliacao">
+                                        <div class="estrelas">★★★★☆</div>
+                                        <span class="nota">4.5/5</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="item-livro">
+                                <div class="posicao">2</div>
+                                <img src="img/livros/romance/Orgulho e Preconceito.jfif" alt="Capa do livro" class="capa-livro">
+                                <div class="info-livro">
+                                    <h4>Orgulho e Preconceito</h4>
+                                    <p>Jane Austen</p>
+                                    <div class="avaliacao">
+                                        <div class="estrelas">★★★★★</div>
+                                        <span class="nota">4.8/5</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="item-livro">
+                                <div class="posicao">3</div>
+                                <img src="img/livros/romance/A Culpa é das Estrelas.jpg" alt="Capa do livro" class="capa-livro">
+                                <div class="info-livro">
+                                    <h4>A Culpa é das Estrelas</h4>
+                                    <p>John Green</p>
+                                    <div class="avaliacao">
+                                        <div class="estrelas">★★★★☆</div>
+                                        <span class="nota">4.3/5</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Gênero Fantasia -->
+                    <div class="card-genero" data-categoria="fantasia">
+                        <div class="cabecalho-genero">
+                            <h3>Fantasia</h3>
+                        </div>
+                        <div class="lista-livros">
+                            <div class="item-livro">
+                                <div class="posicao">1</div>
+                                <img src="img/livros/fantasia/Harry Potter e a Pedra Filosofal" alt="Capa do livro" class="capa-livro">
+                                <div class="info-livro">
+                                    <h4>Harry Potter e a Pedra Filosofal</h4>
+                                    <p>J.K. Rowling</p>
+                                    <div class="avaliacao">
+                                        <div class="estrelas">★★★★★</div>
+                                        <span class="nota">4.9/5</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="item-livro">
+                                <div class="posicao">2</div>
+                                <img src="img/livros/fantasia/O Senhor dos Anéis" alt="Capa do livro" class="capa-livro">
+                                <div class="info-livro">
+                                    <h4>O Senhor dos Anéis</h4>
+                                    <p>J.R.R. Tolkien</p>
+                                    <div class="avaliacao">
+                                        <div class="estrelas">★★★★★</div>
+                                        <span class="nota">4.8/5</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="item-livro">
+                                <div class="posicao">3</div>
+                                <img src="img/livros/fantasia/Narnia.jpg" alt="Capa do livro" class="capa-livro">
+                                <div class="info-livro">
+                                    <h4>As Crônicas de Nárnia</h4>
+                                    <p>C.S. Lewis</p>
+                                    <div class="avaliacao">
+                                        <div class="estrelas">★★★★☆</div>
+                                        <span class="nota">4.6/5</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Gênero Ficção Científica -->
+                    <div class="card-genero" data-categoria="ficcao">
+                        <div class="cabecalho-genero">
+                            <h3>Ficção Científica</h3>
+                        </div>
+                        <div class="lista-livros">
+                            <div class="item-livro">
+                                <div class="posicao">1</div>
+                                <img src="img/livros/Ficção Científica/1984.jfif" alt="Capa do livro" class="capa-livro">
+                                <div class="info-livro">
+                                    <h4>1984</h4>
+                                    <p>George Orwell</p>
+                                    <div class="avaliacao">
+                                        <div class="estrelas">★★★★★</div>
+                                        <span class="nota">4.7/5</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="item-livro">
+                                <div class="posicao">2</div>
+                                <img src="img/livros/Ficção Científica/Fundação.jpg" alt="Capa do livro" class="capa-livro">
+                                <div class="info-livro">
+                                    <h4>Fundação</h4>
+                                    <p>Isaac Asimov</p>
+                                    <div class="avaliacao">
+                                        <div class="estrelas">★★★★☆</div>
+                                        <span class="nota">4.5/5</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="item-livro">
+                                <div class="posicao">3</div>
+                                <img src="img/livros/Ficção Científica/duna.jpg" alt="Capa do livro" class="capa-livro">
+                                <div class="info-livro">
+                                    <h4>Duna</h4>
+                                    <p>Frank Herbert</p>
+                                    <div class="avaliacao">
+                                        <div class="estrelas">★★★★☆</div>
+                                        <span class="nota">4.4/5</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </section>
+
+        <section class="secao-destaques">
+            <div class="container">
+                <h2 class="titulo-secao">Top 5 da Semana</h2>
+                <div class="carrossel">
+                    <!-- Item 1 -->
+                    <div class="item-carrossel">
+                        <img src="img/livros/romance/É Assim que Acaba.jpeg" alt="Livro top 1">
+                        <h3>#1 Mais Lido</h3>
+                        <p>É Assim que Acaba</p>
+                        <p>Colleen Hoover</p>
+                    </div>
+                    
+                    <!-- Item 2 -->
+                    <div class="item-carrossel">
+                        <img src="img/livros/Fantasia/Harry Potter e a Pedra Filosofal" alt="Livro top 2">
+                        <h3>#2 Mais Lido</h3>
+                        <p>Harry Potter</p>
+                        <p>J.K. Rowling</p>
+                    </div>
+                    
+                    <!-- Item 3 -->
+                    <div class="item-carrossel">
+                        <img src="img/livros/Ficção Científica/1984.jfif" alt="Livro top 3">
+                        <h3>#3 Mais Lido</h3>
+                        <p>1984</p>
+                        <p>George Orwell</p>
+                    </div>
+                    
+                    <!-- Item 4 -->
+                    <div class="item-carrossel">
+                        <img src="img/livros/Terror/O HOMEM DE GIZ.jfif" alt="Livro top 4">
+                        <h3>#4 Mais Lido</h3>
+                        <p>O Homen de Giz</p>
+                        <p>C. J. Tudor</p>
+                    </div>
+                    
+                    <!-- Item 5 -->
+                    <div class="item-carrossel">
+                        <img src="img/livros/Terror/Sapiens - Harari Y_ N_.jpeg" alt="Livro top 5">
+                        <h3>#5 Mais Lido</h3>
+                        <p>Sapiens</p>
+                        <p>Yuval Noah Harari</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="grid-generos">
+                    <!-- Gênero Biografia -->
+                    <div class="card-genero" data-categoria="romance">
+                        <div class="cabecalho-genero">
+                            <h3>Biografia</h3>
+                        </div>
+                        <div class="lista-livros">
+                            <div class="item-livro">
+                                <div class="posicao">1</div>
+                                <img src="img/livros/Não-Ficção/Minha História.jpeg" alt="Capa do livro" class="capa-livro">
+                                <div class="info-livro">
+                                      <h4>Minha História</h4>
+                                      <p>Michelle Obama</p>
+                                    <div class="avaliacao">
+                    <div class="estrelas">★★★★★</div>
+                    <span class="nota">4.8/5</span>
+                </div>
+                                </div>
+                            </div>
+                            <div class="item-livro">
+                                <div class="posicao">2</div>
+                                <img src="img/livros/Não-Ficção/Elon Musk.jpeg" alt="Capa do livro" class="capa-livro">
+                                <div class="info-livro">
+                                    <h4>Elon Musk</h4>
+                                    <p>Ashlee Vance</p>
+                                    <div class="avaliacao">
+                                        <div class="estrelas">★★★★★</div>
+                                        <span class="nota">4.8/5</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="item-livro">
+                                <div class="posicao">3</div>
+                                <img src="img/livros/Não-Ficção/Steve Jobs A Biografia.jpeg" alt="Capa do livro" class="capa-livro">
+                                <div class="info-livro">
+                                   <h4>Steve Jobs: A Biografia</h4>
+                <p>Walter Isaacson</p>
+                                    <div class="avaliacao">
+                                        <div class="estrelas">★★★★☆</div>
+                                        <span class="nota">4.3/5</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Gênero Suspense -->
+                    <div class="card-genero" data-categoria="suspense">
+                        <div class="cabecalho-genero">
+                            <h3>Suspense</h3>
+                        </div>
+                        <div class="lista-livros">
+                            <div class="item-livro">
+                                <div class="posicao">1</div>
+                                <img src="img/livros/suspense/O Silêncio dos Inocentes.jpeg" alt="Capa do livro" class="capa-livro">
+                                <div class="info-livro">
+                                    <h4>O Silêncio dos Inocentes</h4>
+                                    <p>Thomas Harris</p>
+                                    <div class="avaliacao">
+                                        <div class="estrelas">★★★★★</div>
+                                        <span class="nota">4.6/5</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="item-livro">
+                                <div class="posicao">2</div>
+                                <img src="img/livros/suspense/Garota Exemplar.jpeg" alt="Capa do livro" class="capa-livro">
+                                <div class="info-livro">
+                                    <h4>Garota Exemplar</h4>
+                                    <p>Gillian Flynn</p>
+                                    <div class="avaliacao">
+                                        <div class="estrelas">★★★★☆</div>
+                                        <span class="nota">4.4/5</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="item-livro">
+                                <div class="posicao">3</div>
+                                <img src="img/livros/suspense/Assassinato no Expresso do Oriente.jpeg" alt="Capa do livro" class="capa-livro">
+                                <div class="info-livro">
+                                    <h4>Assassinato no Expresso do Oriente</h4>
+                                    <p>Agatha Christie</p>
+                                    <div class="avaliacao">
+                                        <div class="estrelas">★★★★☆</div>
+                                        <span class="nota">4.5/5</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Gênero Não-Ficção -->
+                    <div class="card-genero" data-categoria="naoficcao">
+                        <div class="cabecalho-genero">
+                            <h3>Não-Ficção</h3>
+                        </div>
+                        <div class="lista-livros">
+                            <div class="item-livro">
+                                <div class="posicao">1</div>
+                                <img src="img/livros/Terror/Sapiens.jpeg" alt="Capa do livro" class="capa-livro">
+                                <div class="info-livro">
+                                    <h4>Sapiens</h4>
+                                    <p>Yuval Noah Harari</p>
+                                    <div class="avaliacao">
+                                        <div class="estrelas">★★★★☆</div>
+                                        <span class="nota">4.5/5</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="item-livro">
+                                <div class="posicao">2</div>
+                                <img src="img/livros/Não-Ficção/Mais Esperto que o Diabo.jpeg" alt="Capa do livro" class="capa-livro">
+                                <div class="info-livro">
+                                    <h4>Mais Esperto que o Diabo</h4>
+                                    <p>Napoleon Hill</p>
+                                    <div class="avaliacao">
+                                        <div class="estrelas">★★★★☆</div>
+                                        <span class="nota">4.3/5</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="item-livro">
+                                <div class="posicao">3</div>
+                                <img src="img/livros/Não-Ficção/O Poder do Hábito.jpeg" alt="Capa do livro" class="capa-livro">
+                                <div class="info-livro">
+                                    <h4>O Poder do Hábito</h4>
+                                    <p>Charles Duhigg</p>
+                                    <div class="avaliacao">
+                                        <div class="estrelas">★★★★☆</div>
+                                        <span class="nota">4.4/5</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Gênero Autoajuda -->
+                    <div class="card-genero" data-categoria="autoajuda">
+                        <div class="cabecalho-genero">
+                            <h3>Autoajuda</h3>
+                        </div>
+                        <div class="lista-livros">
+                            <div class="item-livro">
+                                <div class="posicao">1</div>
+                                <img src="img/livros/Não-Ficção/O milagre da manhã.jpeg" alt="Capa do livro" class="capa-livro">
+                                <div class="info-livro">
+                                    <h4>O Milagre da Manhã</h4>
+                                    <p>Hal Elrod</p>
+                                    <div class="avaliacao">
+                                        <div class="estrelas">★★★★☆</div>
+                                        <span class="nota">4.2/5</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="item-livro">
+                                <div class="posicao">2</div>
+                                <img src="img/livros/Não-Ficção/Como Fazer Amigos e Influenciar Pessoas.jpeg" alt="Capa do livro" class="capa-livro">
+                                <div class="info-livro">
+                                    <h4>Como Fazer Amigos e Influenciar Pessoas</h4>
+                                    <p>Dale Carnegie</p>
+                                    <div class="avaliacao">
+                                        <div class="estrelas">★★★★★</div>
+                                        <span class="nota">4.7/5</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="item-livro">
+                                <div class="posicao">3</div>
+                                <img src="img/livros/Não-Ficção/O Poder do Agora.jpeg" alt="Capa do livro" class="capa-livro">
+                                <div class="info-livro">
+                                    <h4>O Poder do Agora</h4>
+                                    <p>Eckhart Tolle</p>
+                                    <div class="avaliacao">
+                                        <div class="estrelas">★★★★☆</div>
+                                        <span class="nota">4.3/5</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+        </section>
+
+
+
+
+    <footer class="rodape">
+        <div class="container">
+            <div class="conteudo-rodape">
+                <div class="coluna-rodape">
+                    <h3>Winter Books</h3>
+                    <p>Sua plataforma para descobrir, avaliar e compartilhar livros incríveis.</p>
+                    <div class="redes-sociais">
+                    </div>
+                </div>
+                
+                <div class="coluna-rodape">
+                    <h3>Suporte</h3>
+                    <ul>
+                        <li><a href="ajuda.html">Ajuda</a></li>
+                        <li><a href="contato.html">Contato</a></li>
+                        <li><a href="politica.html">Política de Privacidade</a></li>
+                        <li><a href="termos.html">Termos de Uso</a></li>
+                    </ul>
+                </div>
+                
+                <div class="coluna-rodape">
+                    <h3>Newsletter</h3>
+                    <p>Inscreva-se para receber novidades e recomendações de leitura.</p>
+                    <div class="campo-busca" style="margin-top: 15px;">
+                        <input type="email" placeholder="Seu e-mail">
+                        <button class="botao-buscar">Inscrever</button>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </footer>
+      <script>
+        // Animação de neve
+        function createSnowflake() {
+            const snowflake = document.createElement('div');
+            snowflake.classList.add('snowflake');
+            snowflake.innerHTML = '❄';
+            
+            // Posição horizontal aleatória
+            const startPositionX = Math.random() * 100;
+            snowflake.style.left = `${startPositionX}vw`;
+            
+            // Tamanho aleatório
+            const size = Math.random() * 1.5 + 0.5;
+            snowflake.style.fontSize = `${size}em`;
+            
+            // Duração da animação aleatória
+            const animationDuration = Math.random() * 10 + 5;
+            snowflake.style.animationDuration = `${animationDuration}s`;
+            
+            // Opacidade aleatória
+            snowflake.style.opacity = Math.random() * 0.7 + 0.3;
+            
+            // Adicionar ao container
+            document.getElementById('snow-container').appendChild(snowflake);
+            
+            // Remover após a animação terminar
+            setTimeout(() => {
+                snowflake.remove();
+            }, animationDuration * 1000);
+        }
+        
+        // Criar flocos de neve em intervalos regulares
+        function startSnowfall() {
+            setInterval(createSnowflake, 150);
+        }
+        
+        // Iniciar a animação quando a página carregar
+        window.addEventListener('load', startSnowfall);
+        
+        // Funcionalidade de busca
+        const botoesBuscar = document.querySelectorAll('.botao-buscar');
+        const campoBusca = document.querySelector('.campo-busca input');
+        
+        botoesBuscar.forEach(botao => {
+            if (botao.textContent === 'Buscar') {
+                botao.addEventListener('click', function() {
+                    if (campoBusca.value.trim() !== '') {
+                        alert(`Buscando por: ${campoBusca.value}`);
+                        // Aqui você implementaria a lógica de busca real
+                    }
+                });
+            }
+        });
+        
+        if (campoBusca) {
+            campoBusca.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    const botaoBuscar = document.querySelector('.campo-busca .botao-buscar');
+                    botaoBuscar.click();
+                }
+            });
+        }
+        
+        // Funcionalidade dos botões "Ver Detalhes" e "Ler Resenha Completa"
+        const botoesVerMais = document.querySelectorAll('.botao-ver-mais');
+        botoesVerMais.forEach(botao => {
+            botao.addEventListener('click', function() {
+                const tituloLivro = this.closest('.info-livro').querySelector('h3').textContent;
+                alert(`Redirecionando para detalhes de: ${tituloLivro}`);
+                // Aqui você implementaria o redirecionamento para a página do livro
+            });
+        });
+    </script>
+</body>
+</html>
+</body>
+</html>

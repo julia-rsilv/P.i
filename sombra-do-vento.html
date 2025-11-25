@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Sombra do Vento - Página do Livro</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --cor-primaria: #8050ad;      /* Rosa violeta vibrante */
+            --cor-secundaria: #f5f3f3;    /* Rosa bebê */
+            --cor-terciaria: #64748b;     /* Cinza azulado neutro */
+            --cor-texto: #8050ad;         /* Texto escuro */
+            --cor-fundo: #fafafa;         /* Fundo off-white */
+            --cor-branco: #ffffff;
+            --sombra: 0 4px 10px rgba(0, 0, 0, 0.08);
+            --transicao: all 0.3s ease;
+        }
+
+        body {
+            background-color: var(--cor-fundo);
+            color: var(--cor-texto);
+            line-height: 1.6;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Cabeçalho */
+        .cabecalho {
+            background-color: var(--cor-branco);
+            box-shadow: var(--sombra);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .cabecalho .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 15px 20px;
+        }
+
+        .logo img {
+            height: 70px;
+            width: auto;
+            transition: var(--transicao);
+        }
+
+        .logo a:hover img {
+            transform: scale(1.05);
+        }
+
+        /* Menu principal */
+        .menu-principal ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        .menu-principal a {
+            text-decoration: none;
+            color: var(--cor-texto);
+            font-weight: 600;
+            font-size: 16px;
+            transition: var(--transicao);
+            position: relative;
+            padding: 5px 0;
+        }
+
+        .menu-principal a:hover,
+        .menu-principal a.ativo {
+            color: var(--cor-primaria);
+        }
+
+        .menu-principal a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--cor-primaria);
+            transition: var(--transicao);
+        }
+
+        .menu-principal a:hover::after,
+        .menu-principal a.ativo::after {
+            width: 100%;
+        }
+
+        .icone-login img {
+            height: 50px;
+            width: auto;
+            transition: var(--transicao);
+        }
+
+        .icone-login a:hover img {
+            transform: scale(1.1);
+        }
+
+        /* Página do Livro */
+        .pagina-livro {
+            padding: 40px 0;
+        }
+
+        .conteudo-livro {
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            gap: 40px;
+            align-items: start;
+        }
+
+        .capa-livro {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: var(--sombra);
+            transition: var(--transicao);
+        }
+
+        .capa-livro:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .detalhes-livro {
+            background-color: var(--cor-branco);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: var(--sombra);
+        }
+
+        .detalhes-livro h1 {
+            font-size: 2.5rem;
+            color: var(--cor-primaria);
+            margin-bottom: 20px;
+        }
+
+        .info-item {
+            margin-bottom: 15px;
+            display: flex;
+        }
+
+        .info-item strong {
+            min-width: 150px;
+            color: var(--cor-primaria);
+        }
+
+        .sinopse {
+            margin-top: 30px;
+            line-height: 1.8;
+        }
+
+        .acoes-livro {
+            display: flex;
+            gap: 15px;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+
+        .botao-acao {
+            background-color: var(--cor-primaria);
+            color: var(--cor-branco);
+            border: none;
+            padding: 12px 20px;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: var(--transicao);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .botao-acao:hover {
+            background-color: var(--cor-terciaria);
+        }
+
+        .botao-acao.ativo {
+            background-color: var(--cor-terciaria);
+        }
+
+        .avaliacao-livro {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin: 20px 0;
+        }
+
+        .estrelas-livro {
+            font-size: 1.5rem;
+            color: #ffc107;
+        }
+
+        .avaliacao-texto {
+            font-size: 1rem;
+            color: #666;
+        }
+
+        /* Seção de livros relacionados */
+        .secao-relacionados {
+            padding: 60px 0;
+        }
+
+        .titulo-secao {
+            text-align: center;
+            font-size: 2.5rem;
+            color: var(--cor-primaria);
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        .titulo-secao::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background-color: var(--cor-secundaria);
+        }
+
+        .grid-livros {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .card-livro {
+            background-color: var(--cor-branco);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--sombra);
+            transition: var(--transicao);
+        }
+
+        .card-livro:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .card-livro img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+
+        .info-livro {
+            padding: 20px;
+        }
+
+        .info-livro h3 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            color: var(--cor-primaria);
+        }
+
+        .info-livro p {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 15px;
+        }
+
+        .avaliacao {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .estrelas {
+            color: #ffc107;
+            margin-right: 10px;
+        }
+
+        .botao-ver-mais {
+            background-color: var(--cor-primaria);
+            color: var(--cor-branco);
+            border: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: var(--transicao);
+            width: 100%;
+        }
+
+        .botao-ver-mais:hover {
+            background-color: var(--cor-terciaria);
+        }
+
+        /* Rodapé */
+        .rodape {
+            background-color: var(--cor-texto);
+            color: var(--cor-branco);
+            padding: 40px 0 20px;
+        }
+
+        .conteudo-rodape {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 30px;
+        }
+
+        .coluna-rodape h3 {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            color: var(--cor-secundaria);
+        }
+
+        .coluna-rodape ul {
+            list-style: none;
+        }
+
+        .coluna-rodape ul li {
+            margin-bottom: 10px;
+        }
+
+        .coluna-rodape ul li a {
+            color: #ccc;
+            text-decoration: none;
+            transition: var(--transicao);
+        }
+
+        .coluna-rodape ul li a:hover {
+            color: var(--cor-branco);
+        }
+
+        .redes-sociais {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .redes-sociais a {
+            color: var(--cor-branco);
+            font-size: 1.5rem;
+            transition: var(--transicao);
+        }
+
+        .redes-sociais a:hover {
+            color: var(--cor-secundaria);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            color: #aaa;
+        }
+
+        /* Responsividade */
+        @media (max-width: 768px) {
+            .conteudo-livro {
+                grid-template-columns: 1fr;
+            }
+            
+            .detalhes-livro h1 {
+                font-size: 2rem;
+            }
+            
+            .titulo-secao {
+                font-size: 2rem;
+            }
+            
+            .grid-livros {
+                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            }
+        }
+
+        @media (max-width: 576px) {
+            .cabecalho .container {
+                padding: 10px 15px;
+            }
+            
+            .logo img {
+                height: 40px;
+            }
+            
+            .titulo-secao {
+                font-size: 1.5rem;
+            }
+            
+            .grid-livros {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Cabeçalho -->
+    <header class="cabecalho">
+        <div class="container">
+            <div class="logo">
+                <a href="#"><img src="img/logos/winter.png" alt="Logo da Biblioteca"></a>
+            </div>
+            
+             
+            <nav class="menu-principal">
+                <ul>
+                    <li><a href="index.html" class="ativo">INÍCIO</a></li>
+                    <li><a href="autores.html">AUTORES</a></li>
+                    <li><a href="mais-lidos.html">MAIS LIDOS</a></li>
+                    <li><a href="educacionais.html">EDUCACIONAIS</a></li>
+                    <li><a href="generos.html" class="generos-link">GÊNEROS</a></li>
+                </ul>
+            </nav>
+            
+            <div class="icone-login">
+                <a href="#"><img src="img/logos/login.png" alt="Ícone de Login"></a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Página do Livro -->
+    <section class="pagina-livro">
+        <div class="container">
+            <div class="conteudo-livro">
+                <div class="capa-container">
+                    <img src="img/livros/Ficção Científica/a sobra do vento.jfif" alt="Capa do livro A Sombra do Vento" class="capa-livro">
+                </div>
+                
+                <div class="detalhes-livro">
+                    <h1>A Sombra do Vento</h1>
+                    
+                    <div class="info-item">
+                        <strong>Autor:</strong>
+                        <span>Carlos Ruiz Zafón</span>
+                    </div>
+                    
+                    <div class="info-item">
+                        <strong>Ano de Lançamento:</strong>
+                        <span>2001</span>
+                    </div>
+                    
+                    <div class="info-item">
+                        <strong>Gêneros:</strong>
+                        <span>Mistério, Suspense, Ficção Histórica</span>
+                    </div>
+                    
+                    <div class="info-item">
+                        <strong>Páginas:</strong>
+                        <span>480</span>
+                    </div>
+                    
+                    <div class="info-item">
+                        <strong>Editora:</strong>
+                        <span>Planeta</span>
+                    </div>
+                    
+                    <div class="avaliacao-livro">
+                        <div class="estrelas-livro">★★★★★</div>
+                        <span class="avaliacao-texto">4.7 (12.345 avaliações)</span>
+                    </div>
+                    
+                    <div class="sinopse">
+                        <p>Barcelona, 1945. Um menino é conduzido por seu pai a um misterioso lugar oculto no coração da cidade 
+                        antiga: o Cemitério dos Livros Esquecidos. Lá, Daniel Sempere encontra um livro maldito que muda o 
+                        rumo de sua vida e o arrasta para um labirinto de intrigas e segredos enterrados na alma obscura da cidade.</p>
+                        
+                        <p>Nesta narrativa cativante, Carlos Ruiz Zafón tece uma trama repleta de mistério, amor e tragédia, 
+                        ambientada na Barcelona do pós-guerra, onde cada página revela novos segredos e cada personagem guarda 
+                        seu próprio enigma.</p>
+                    </div>
+                    
+                    <div class="acoes-livro">
+                        <button class="botao-acao" id="btnQueroLer">
+                            <i class="fas fa-bookmark"></i> Quero ler
+                        </button>
+                        <button class="botao-acao" id="btnJaLi">
+                            <i class="fas fa-book"></i> Já li
+                        </button>
+                        <button class="botao-acao" id="btnFavoritar">
+                            <i class="far fa-heart"></i> Favoritar
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção de livros relacionados -->
+    <section class="secao-relacionados">
+        <div class="container">
+            <h2 class="titulo-secao">Livros Relacionados</h2>
+            
+            <div class="grid-livros">
+                <div class="card-livro">
+                    <img src="img/livros/Ficção Científica/O Jogo do Anjo.jpeg" alt="O Jogo do Anjo">
+                    <div class="info-livro">
+                        <h3>O Jogo do Anjo</h3>
+                        <p>Carlos Ruiz Zafón</p>
+                        <div class="avaliacao">
+                            <div class="estrelas">★★★★☆</div>
+                            <span>4.5</span>
+                        </div>
+                        <button class="botao-ver-mais">Ver Mais</button>
+                    </div>
+                </div>
+                
+                <div class="card-livro">
+                    <img src="img/livros/Ficção Científica/O prisioneiro do céu.jpeg" alt="O Prisioneiro do Céu">
+                    <div class="info-livro">
+                        <h3>O Prisioneiro do Céu</h3>
+                        <p>Carlos Ruiz Zafón</p>
+                        <div class="avaliacao">
+                            <div class="estrelas">★★★★☆</div>
+                            <span>4.4</span>
+                        </div>
+                        <button class="botao-ver-mais">Ver Mais</button>
+                    </div>
+                </div>
+                
+                <div class="card-livro">
+                    <img src="img/livros/Ficção Científica/O Labirinto dos.jpeg" alt="O Labirinto dos Espíritos">
+                    <div class="info-livro">
+                        <h3>O Labirinto dos Espíritos</h3>
+                        <p>Carlos Ruiz Zafón</p>
+                        <div class="avaliacao">
+                            <div class="estrelas">★★★★★</div>
+                            <span>4.8</span>
+                        </div>
+                        <button class="botao-ver-mais">Ver Mais</button>
+                    </div>
+                </div>
+                
+                <div class="card-livro">
+                    <img src="img/livros/Ficção Científica/O nome do vento.jpeg" alt="O Nome do Vento">
+                    <div class="info-livro">
+                        <h3>O Nome do Vento</h3>
+                        <p>Patrick Rothfuss</p>
+                        <div class="avaliacao">
+                            <div class="estrelas">★★★★★</div>
+                            <span>4.7</span>
+                        </div>
+                        <button class="botao-ver-mais">Ver Mais</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Rodapé -->
+    <footer class="rodape">
+        <div class="container">
+            <div class="conteudo-rodape">
+                <div class="coluna-rodape">
+                    <h3>Navegação</h3>
+                    <ul>
+                        <li><a href="#">Início</a></li>
+                        <li><a href="#">Livros</a></li>
+                        <li><a href="#">Autores</a></li>
+                        <li><a href="#">Gêneros</a></li>
+                        <li><a href="#">Sobre</a></li>
+                    </ul>
+                </div>
+                
+                <div class="coluna-rodape">
+                    <h3>Contato</h3>
+                    <ul>
+                        <li><a href="#">Fale Conosco</a></li>
+                        <li><a href="#">Suporte</a></li>
+                        <li><a href="#">Trabalhe Conosco</a></li>
+                    </ul>
+                </div>
+                
+                <div class="coluna-rodape">
+                    <h3>Legal</h3>
+                    <ul>
+                        <li><a href="#">Termos de Uso</a></li>
+                        <li><a href="#">Política de Privacidade</a></li>
+                        <li><a href="#">Cookies</a></li>
+                    </ul>
+                </div>
+                
+                <div class="coluna-rodape">
+                    <h3>Siga-nos</h3>
+                    <div class="redes-sociais">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-goodreads"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="copyright">
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Interatividade dos botões
+        const btnQueroLer = document.getElementById("btnQueroLer");
+        const btnJaLi = document.getElementById("btnJaLi");
+        const btnFavoritar = document.getElementById("btnFavoritar");
+
+        btnQueroLer.addEventListener("click", () => {
+            btnQueroLer.classList.toggle("ativo");
+        });
+
+        btnJaLi.addEventListener("click", () => {
+            btnJaLi.classList.toggle("ativo");
+        });
+
+        btnFavoritar.addEventListener("click", function() {
+            this.classList.toggle("ativo");
+            const icon = this.querySelector("i");
+            if (this.classList.contains("ativo")) {
+                icon.className = "fas fa-heart";
+            } else {
+                icon.className = "far fa-heart";
+            }
+        });
+    </script>
+</body>
+</html>

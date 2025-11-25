@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Winter Books - Autores</title>
+    <link rel="stylesheet" href="autores.css">
+</head>
+<body>
+    <header class="cabecalho">
+        <div class="container">
+            <div class="logo">
+                <a href="inicio.html">
+                    <a href="winter-books.html">
+                        <img src="img/logos/winter.png" alt="Winter Books Logo">
+                    </a>
+                </a>
+            </div>
+            
+            <nav class="menu-principal">
+                <ul>
+                    <li><a href="index.html">INÍCIO</a></li>
+                    <li><a href="autores.html" class="ativo">AUTORES</a></li>
+                    <li><a href="mais-lidos.html">MAIS LIDOS</a></li>
+                    <li><a href="educacionais.html">EDUCACIONAIS</a></li>
+                    <li><a href="generos.html" class="generos-link">GÊNEROS</a></li>
+                </ul>
+            </nav>
+            
+            <div class="icone-login">
+                <a href="login.html">
+                    <a href="login.html">
+                        <img src="img/logos/login.png" alt="Login">
+                    </a>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main class="conteudo-principal">
+        <section class="secao-apresentacao">
+            <div class="elementos-decorativos">
+                <div class="circulo-roxo"></div>
+                <div class="circulo-rosa"></div>
+            </div>
+            
+            <div class="snow-container" id="snow-container"></div>
+            
+            <div class="container">
+                <div class="texto-apresentacao">
+                    <h1>Nossos Autores</h1>
+                    <p>Descubra as mentes brilhantes por trás das histórias que você ama. <br> Conheça seus autores favoritos e encontre novos talentos.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="secao-busca">
+            <div class="borda-neve-superior"></div>
+            
+            <div class="container">
+                <div class="campo-busca estilizada">
+                    <input type="text" placeholder="Pesquise por autor...">
+                    <button class="botao-buscar">Buscar</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="secao-conteudo">
+            <div class="container">
+                <h2 class="titulo-secao">Todos os Autores</h2>
+                
+                <div class="filtros">
+                    <button class="filtro-botao ativo" data-filtro="todos">Todos</button>
+                </div>
+                
+                <div class="grid-autores">
+
+                    <!-- Autor 1 -->
+                    <div class="card-autor" data-categoria="nacional romance">
+                        <a href="paulocoelho.html">
+                            <img src="img/Autores/Paulo Coelho.jpg" alt="Paulo Coelho">
+                        </a>
+                        <div class="info-autor">
+                            <h3>Paulo Coelho</h3>
+                            <div class="nacionalidade">Brasileiro</div>
+                            <div class="generos">
+                                <span class="genero-tag">Romance</span>
+                                <span class="genero-tag">Espiritualidade</span>
+                                <span class="genero-tag">Ficção</span>
+                            </div>
+                            <p>Um dos escritores mais lidos do mundo, conhecido por obras como "O Alquimista".</p>
+                            <button class="botao-ver-obras">Ver Obras</button>
+                        </div>
+                    </div>
+
+                    <!-- Autor 2 -->
+                    <div class="card-autor" data-categoria="internacional fantasia">
+                        <a href="jk-rowling.html">
+                            <img src="img/Autores/J_K Rowling.jpg" alt="J.K. Rowling">
+                        </a>
+                        <div class="info-autor">
+                            <h3>J.K. Rowling</h3>
+                            <div class="nacionalidade">Britânica</div>
+                            <div class="generos">
+                                <span class="genero-tag">Fantasia</span>
+                                <span class="genero-tag">Aventura</span>
+                                <span class="genero-tag">Infantojuvenil</span>
+                            </div>
+                            <p>Criadora de Harry Potter.</p>
+                            <button class="botao-ver-obras">Ver Obras</button>
+                        </div>
+                    </div>
+
+                    <!-- Autor 3 -->
+                    <div class="card-autor" data-categoria="nacional romance">
+                        <a href="clarice-lispector.html">
+                            <img src="img/Autores/Clarice Lispector.jpg" alt="Clarice Lispector">
+                        </a>
+                        <div class="info-autor">
+                            <h3>Clarice Lispector</h3>
+                            <div class="nacionalidade">Brasileira</div>
+                            <div class="generos">
+                                <span class="genero-tag">Romance</span>
+                                <span class="genero-tag">Contos</span>
+                                <span class="genero-tag">Literatura Brasileira</span>
+                            </div>
+                            <p>Autora introspectiva e inovadora.</p>
+                            <button class="botao-ver-obras">Ver Obras</button>
+                        </div>
+                    </div>
+
+                    <!-- Autor 4 -->
+                    <div class="card-autor" data-categoria="internacional ficcao">
+                        <a href="isaac-asimov.html">
+                            <img src="img/autores/Isaac Asimov_.jpg" alt="Isaac Asimov">
+                        </a>
+                        <div class="info-autor">
+                            <h3>Isaac Asimov</h3>
+                            <div class="nacionalidade">Americano</div>
+                            <div class="generos">
+                                <span class="genero-tag">Ficção Científica</span>
+                                <span class="genero-tag">Divulgação Científica</span>
+                            </div>
+                            <p>Mestre da ficção científica.</p>
+                            <button class="botao-ver-obras">Ver Obras</button>
+                        </div>
+                    </div>
+
+                    <!-- Autor 5 -->
+                    <div class="card-autor" data-categoria="nacional suspense">
+                        <a href="agatha-christie.html">
+                            <img src="img/Autores/agatha christie.jpg" alt="Agatha Christie">
+                        </a>
+                        <div class="info-autor">
+                            <h3>Agatha Christie</h3>
+                            <div class="nacionalidade">Britânica</div>
+                            <div class="generos">
+                                <span class="genero-tag">Suspense</span>
+                                <span class="genero-tag">Mistério</span>
+                                <span class="genero-tag">Policial</span>
+                            </div>
+                            <p>A Rainha do Crime.</p>
+                            <button class="botao-ver-obras">Ver Obras</button>
+                        </div>
+                    </div>
+
+                    <!-- Autor 6 -->
+                    <div class="card-autor" data-categoria="internacional romance">
+                        <a href="jane-austen.html">
+                            <img src="img/Autores/Jane Austen.jpg" alt="Jane Austen">
+                        </a>
+                        <div class="info-autor">
+                            <h3>Jane Austen</h3>
+                            <div class="nacionalidade">Britânica</div>
+                            <div class="generos">
+                                <span class="genero-tag">Romance</span>
+                                <span class="genero-tag">Clássico</span>
+                                <span class="genero-tag">Sátira Social</span>
+                            </div>
+                            <p>Autora de "Orgulho e Preconceito".</p>
+                            <button class="botao-ver-obras">Ver Obras</button>
+                        </div>
+                    </div>
+
+                    <!-- Autor 7 -->
+                    <div class="card-autor" data-categoria="nacional romance">
+                        <a href="machado-de-assis.html">
+                            <img src="img/autores/Machado de Assis.jpg" alt="Machado de Assis">
+                        </a>
+                        <div class="info-autor">
+                            <h3>Machado de Assis</h3>
+                            <div class="nacionalidade">Brasileiro</div>
+                            <div class="generos">
+                                <span class="genero-tag">Romance</span>
+                                <span class="genero-tag">Contos</span>
+                                <span class="genero-tag">Crônicas</span>
+                            </div>
+                            <p>Maior nome da literatura brasileira.</p>
+                            <button class="botao-ver-obras">Ver Obras</button>
+                        </div>
+                    </div>
+
+                    <!-- Autor 8 -->
+                    <div class="card-autor" data-categoria="internacional fantasia">
+                        <a href="jrr-tolkien.html">
+                            <img src="img/autores/J_ R. R. Tolkien" alt="J.R.R. Tolkien">
+                        </a>
+                        <div class="info-autor">
+                            <h3>J.R.R. Tolkien</h3>
+                            <div class="nacionalidade">Britânico</div>
+                            <div class="generos">
+                                <span class="genero-tag">Fantasia</span>
+                                <span class="genero-tag">Aventura</span>
+                                <span class="genero-tag">Épico</span>
+                            </div>
+                            <p>Criador da Terra-média.</p>
+                            <button class="botao-ver-obras">Ver Obras</button>
+                        </div>
+                    </div>
+
+                    <!-- Autor 9 -->
+                    <div class="card-autor" data-categoria="nacional romance">
+                        <a href="stephen-king.html">
+                            <img src="img/autores/stephen king.jpg" alt="Stephen king">
+                        </a>
+                        <div class="info-autor">
+                           <h3>Stephen King</h3>
+                           <div class="nacionalidade">Estadunidense</div>
+                           <div class="generos">
+                               <span class="genero-tag">Terror</span>
+                               <span class="genero-tag">Suspense</span>
+                               <span class="genero-tag">Fantasia</span>
+                           </div>
+                           <p>Autor mundialmente famoso.</p>
+                           <button class="botao-ver-obras">Ver Obras</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- DESTAQUES -->
+        <section class="secao-destaques">
+            <div class="container">
+                <h2 class="titulo-secao">Autores em Destaque</h2>
+                <div class="carrossel">
+
+                    <div class="item-carrossel">
+                        <a href="colleen-hoover.html">
+                            <img src="img/autores/Colleen Hoover.jpg" alt="Autor em destaque">
+                        </a>
+                        <h3>Autor do Mês</h3>
+                        <p>Colleen Hoover</p>
+                        <p>Romance Contemporâneo</p>
+                    </div>
+                    
+                    <div class="item-carrossel">
+                        <a href="raphael-montes.html">
+                            <img src="img/autores/Raphael Montes.jpg" alt="Autor em destaque">
+                        </a>
+                        <h3>Revelação</h3>
+                        <p>Raphael Montes</p>
+                        <p>Suspense Brasileiro</p>
+                    </div>
+                    
+                    <div class="item-carrossel">
+                        <a href="jorge-amado.html">
+                            <img src="img/autores/Jorge Amado.jpg" alt="Autor em destaque">
+                        </a>
+                        <h3>Clássico</h3>
+                        <p>Jorge Amado</p>
+                        <p>Literatura Brasileira</p>
+                    </div>
+                    
+                    <div class="item-carrossel">
+                        <a href="stephen-king.html">
+                            <img src="img/autores/stephen king.jpg" alt="Autor em destaque">
+                        </a>
+                        <h3>Internacional</h3>
+                        <p>Stephen King</p>
+                        <p>Terror e Suspense</p>
+                    </div>
+                    
+                    <div class="item-carrossel">
+                        <a href="conceicao-evaristo.html">
+                            <img src="img/autores/Conceição Evaristo.jpg" alt="Autor em destaque">
+                        </a>
+                        <h3>Nacional</h3>
+                        <p>Conceição Evaristo</p>
+                        <p>Literatura Contemporânea</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SUCESSOS -->
+        <section class="secao-conteudo">
+            <div class="container">
+                <h2>Sucessos Autorais</h2>
+                <div class="grid-autores">
+
+                    <div class="card-autor">
+                        <a href="torto-arado.html">
+                            <img src="img/livros/romance/Torto Arado.jpg" alt="Torto Arado">
+                        </a>
+                        <div class="info-autor">
+                            <h3>Itamar Vieira Junior</h3>
+                            <div class="nacionalidade">Brasileiro</div>
+                            <div class="generos">
+                                <span class="genero-tag">Romance</span>
+                                <span class="genero-tag">Literatura Brasileira</span>
+                            </div>
+                            <p><strong>Obra de destaque:</strong> “Torto Arado”.</p>
+                            <button class="botao-ver-obras">Saiba Mais</button>
+                        </div>
+                    </div>
+
+                    <div class="card-autor">
+                        <a href="mistborn.html">
+                            <img src="img/livros/Fantasia/Mistborn.jpg" alt="Mistborn">
+                        </a>
+                        <div class="info-autor">
+                            <h3>Brandon Sanderson</h3>
+                            <div class="nacionalidade">Americano</div>
+                            <div class="generos">
+                                <span class="genero-tag">Fantasia</span>
+                                <span class="genero-tag">Aventura</span>
+                            </div>
+                            <p><strong>Obra de destaque:</strong> “Mistborn”.</p>
+                            <button class="botao-ver-obras">Saiba Mais</button>
+                        </div>
+                    </div>
+
+                    <div class="card-autor">
+                        <a href="quarto-de-despejo.html">
+                            <img src="img/livros/Não-Ficção/Quarto de Despejo.jpg" alt="Quarto de Despejo">
+                        </a>
+                        <div class="info-autor">
+                            <h3>Carolina Maria de Jesus</h3>
+                            <div class="nacionalidade">Brasileira</div>
+                            <div class="generos">
+                                <span class="genero-tag">Biografia</span>
+                                <span class="genero-tag">Literatura Realista</span>
+                            </div>
+                            <p><strong>Obra de destaque:</strong> “Quarto de Despejo”.</p>
+                            <button class="botao-ver-obras">Saiba Mais</button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="rodape">
+        <div class="container">
+            <div class="conteudo-rodape">
+                <div class="coluna-rodape">
+                    <h3>Winter Books</h3>
+                    <p>Sua plataforma para descobrir, avaliar e compartilhar livros.</p>
+                </div>
+                
+                <div class="coluna-rodape">
+                    <h3>Suporte</h3>
+                    <ul>
+                        <li><a href="ajuda.html">Ajuda</a></li>
+                        <li><a href="contato.html">Contato</a></li>
+                        <li><a href="politica.html">Política de Privacidade</a></li>
+                        <li><a href="termos.html">Termos de Uso</a></li>
+                    </ul>
+                </div>
+                
+                <div class="coluna-rodape">
+                    <h3>Newsletter</h3>
+                    <p>Inscreva-se para receber novidades.</p>
+                    <div class="campo-busca" style="margin-top: 15px;">
+                        <input type="email" placeholder="Seu e-mail">
+                        <button class="botao-buscar">Inscrever</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+<script>
+    // Neve
+    function createSnowflake() {
+        const snowflake = document.createElement('div');
+        snowflake.classList.add('snowflake');
+        snowflake.innerHTML = '❄';
+        snowflake.style.left = `${Math.random() * 100}vw`;
+        snowflake.style.fontSize = `${Math.random() * 1.5 + 0.5}em`;
+        snowflake.style.animationDuration = `${Math.random() * 10 + 5}s`;
+        snowflake.style.opacity = Math.random() * 0.7 + 0.3;
+        document.getElementById('snow-container').appendChild(snowflake);
+        setTimeout(() => snowflake.remove(), 15000);
+    }
+    setInterval(createSnowflake, 150);
+</script>
+
+</body>
+</html>

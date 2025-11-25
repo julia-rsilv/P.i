@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Winter Books</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --cor-primaria: #4a306d;
+            --cor-secundaria: #e83f6f;
+            --cor-terciaria: #2274a5;
+            --cor-texto: #333;
+            --cor-fundo: #f8f9fa;
+            --cor-branco: #fff;
+            --cor-sucesso: #28a745;
+            --cor-erro: #dc3545;
+            --sombra: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --sombra-pesada: 0 10px 25px rgba(0, 0, 0, 0.15);
+            --transicao: all 0.3s ease;
+        }
+
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: var(--cor-texto);
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 450px;
+        }
+
+        .logo {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .logo h1 {
+            color: var(--cor-branco);
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .logo p {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 1.1rem;
+        }
+
+        .card-login {
+            background-color: var(--cor-branco);
+            border-radius: 20px;
+            box-shadow: var(--sombra-pesada);
+            padding: 40px;
+            transition: var(--transicao);
+        }
+
+        .card-login:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+        }
+
+        .cabecalho-formulario {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .cabecalho-formulario h2 {
+            color: var(--cor-primaria);
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+        }
+
+        .cabecalho-formulario p {
+            color: #666;
+            font-size: 1rem;
+        }
+
+        .formulario-login {
+            width: 100%;
+        }
+
+        .grupo-input {
+            margin-bottom: 25px;
+            position: relative;
+        }
+
+        .grupo-input label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--cor-texto);
+        }
+
+        .input-com-icone {
+            position: relative;
+        }
+
+        .input-com-icone i {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #999;
+            transition: var(--transicao);
+        }
+
+        .grupo-input input {
+            width: 100%;
+            padding: 15px 15px 15px 45px;
+            border: 2px solid #e1e5e9;
+            border-radius: 10px;
+            font-size: 16px;
+            transition: var(--transicao);
+            background-color: #f8f9fa;
+        }
+
+        .grupo-input input:focus {
+            border-color: var(--cor-primaria);
+            background-color: var(--cor-branco);
+            box-shadow: 0 0 0 3px rgba(74, 48, 109, 0.1);
+            outline: none;
+        }
+
+        .grupo-input input:focus + i {
+            color: var(--cor-primaria);
+        }
+
+        .grupo-input input.invalido {
+            border-color: var(--cor-erro);
+        }
+
+        .grupo-input input.valido {
+            border-color: var(--cor-sucesso);
+        }
+
+        .mensagem-erro {
+            color: var(--cor-erro);
+            font-size: 0.8rem;
+            margin-top: 5px;
+            display: none;
+        }
+
+        .indicador-forca {
+            height: 5px;
+            border-radius: 5px;
+            margin-top: 5px;
+            background-color: #e1e5e9;
+            overflow: hidden;
+        }
+
+        .forca-senha {
+            height: 100%;
+            width: 0%;
+            transition: var(--transicao);
+        }
+
+        .fraca { background-color: var(--cor-erro); width: 33%; }
+        .media { background-color: #ffc107; width: 66%; }
+        .forte { background-color: var(--cor-sucesso); width: 100%; }
+
+        .opcoes-extras {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+            font-size: 0.9rem;
+        }
+
+        .lembrar-senha {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .lembrar-senha input {
+            width: 16px;
+            height: 16px;
+            accent-color: var(--cor-primaria);
+        }
+
+        .esqueci-senha {
+            color: var(--cor-primaria);
+            text-decoration: none;
+            transition: var(--transicao);
+        }
+
+        .esqueci-senha:hover {
+            color: var(--cor-terciaria);
+            text-decoration: underline;
+        }
+
+        .botao-login {
+            width: 100%;
+            background-color: var(--cor-primaria);
+            color: var(--cor-branco);
+            border: none;
+            padding: 16px;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transicao);
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .botao-login:hover {
+            background-color: var(--cor-terciaria);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .botao-login:active {
+            transform: translateY(0);
+        }
+
+        .botao-login:disabled {
+            background-color: #cccccc;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
+        .botao-login.carregando {
+            position: relative;
+            color: transparent;
+        }
+
+        .botao-login.carregando::after {
+            content: "";
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            border: 2px solid transparent;
+            border-top: 2px solid var(--cor-branco);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .divisor {
+            display: flex;
+            align-items: center;
+            margin: 25px 0;
+            color: #999;
+        }
+
+        .divisor::before,
+        .divisor::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background-color: #e1e5e9;
+        }
+
+        .divisor span {
+            padding: 0 15px;
+            font-size: 0.9rem;
+        }
+
+        .login-social {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .botao-social {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 12px;
+            border: 2px solid #e1e5e9;
+            border-radius: 10px;
+            background-color: var(--cor-branco);
+            cursor: pointer;
+            transition: var(--transicao);
+            font-weight: 600;
+        }
+
+        .botao-social:hover {
+            border-color: var(--cor-primaria);
+            transform: translateY(-2px);
+        }
+
+        .botao-social.google {
+            color: #DB4437;
+        }
+
+        .botao-social.facebook {
+            color: #4267B2;
+        }
+
+        .link-cadastro {
+            text-align: center;
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        .link-cadastro a {
+            color: var(--cor-primaria);
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transicao);
+        }
+
+        .link-cadastro a:hover {
+            color: var(--cor-terciaria);
+            text-decoration: underline;
+        }
+
+        .mensagem-flutuante {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 15px 20px;
+            border-radius: 10px;
+            color: var(--cor-branco);
+            font-weight: 600;
+            box-shadow: var(--sombra-pesada);
+            transform: translateX(150%);
+            transition: transform 0.4s ease;
+            z-index: 1000;
+        }
+
+        .mensagem-flutuante.mostrar {
+            transform: translateX(0);
+        }
+
+        .mensagem-sucesso {
+            background-color: var(--cor-sucesso);
+        }
+
+        .mensagem-erro-geral {
+            background-color: var(--cor-erro);
+        }
+
+        /* Modal de recuperação de senha */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .modal-conteudo {
+            background-color: var(--cor-branco);
+            border-radius: 15px;
+            padding: 30px;
+            max-width: 500px;
+            width: 100%;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+            position: relative;
+            transform: scale(0.9);
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+
+        .modal.mostrar .modal-conteudo {
+            transform: scale(1);
+            opacity: 1;
+        }
+
+        .fechar-modal {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #999;
+            transition: var(--transicao);
+        }
+
+        .fechar-modal:hover {
+            color: var(--cor-secundaria);
+        }
+
+        .modal-conteudo h2 {
+            color: var(--cor-primaria);
+            margin-bottom: 15px;
+        }
+
+        .modal-conteudo p {
+            margin-bottom: 20px;
+            color: #666;
+        }
+
+        /* Responsividade */
+        @media (max-width: 576px) {
+            .card-login {
+                padding: 30px 20px;
+            }
+            
+            .cabecalho-formulario h2 {
+                font-size: 1.6rem;
+            }
+            
+            .login-social {
+                flex-direction: column;
+            }
+            
+            .opcoes-extras {
+                flex-direction: column;
+                gap: 15px;
+                align-items: flex-start;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo">
+            <h1>Winter Books</h1>
+            <p>Sua jornada literária começa aqui</p>
+        </div>
+        
+        <div class="card-login">
+            <div class="cabecalho-formulario">
+                <h2>Fazer Login</h2>
+                <p>Entre com suas credenciais para acessar sua conta</p>
+            </div>
+            
+            <form class="formulario-login" id="formLogin">
+                <div class="grupo-input">
+                    <label for="email">E-mail</label>
+                    <div class="input-com-icone">
+                        <input type="email" id="email" name="email" placeholder="seu@email.com" required>
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <div class="mensagem-erro" id="erroEmail">Por favor, insira um e-mail válido</div>
+                </div>
+                
+                <div class="grupo-input">
+                    <label for="senha">Senha</label>
+                    <div class="input-com-icone">
+                        <input type="password" id="senha" name="senha" placeholder="Sua senha" required>
+                        <i class="fas fa-lock"></i>
+                    </div>
+                    <div class="indicador-forca">
+                        <div class="forca-senha" id="forcaSenha"></div>
+                    </div>
+                    <div class="mensagem-erro" id="erroSenha">A senha deve ter pelo menos 6 caracteres</div>
+                </div>
+                
+                <div class="opcoes-extras">
+                    <div class="lembrar-senha">
+                        <input type="checkbox" id="lembrar">
+                        <label for="lembrar">Lembrar de mim</label>
+                    </div>
+                    <a href="#" class="esqueci-senha" id="abrirModal">Esqueci minha senha</a>
+                </div>
+                
+                <button type="submit" class="botao-login" id="botaoLogin">
+                    <i class="fas fa-sign-in-alt"></i>
+                    Entrar na Conta
+                </button>
+                
+                <div class="divisor">
+                    <span>ou continue com</span>
+                </div>
+                
+                <div class="login-social">
+                    <button type="button" class="botao-social google">
+                        <i class="fab fa-google"></i>
+                        <span>Google</span>
+                    </button>
+                    <button type="button" class="botao-social facebook">
+                        <i class="fab fa-facebook-f"></i>
+                        <span>Facebook</span>
+                    </button>
+                </div>
+                
+                <div class="link-cadastro">
+                    <p>Não tem uma conta? <a href="#" id="linkCadastro">Cadastre-se agora</a></p>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal de recuperação de senha -->
+    <div class="modal" id="modalRecuperacao">
+        <div class="modal-conteudo">
+            <span class="fechar-modal" id="fecharModal">&times;</span>
+            <h2>Recuperar Senha</h2>
+            <p>Digite seu e-mail cadastrado e enviaremos um link para redefinir sua senha.</p>
+            <form id="formRecuperacao">
+                <div class="grupo-input">
+                    <label for="emailRecuperacao">E-mail</label>
+                    <div class="input-com-icone">
+                        <input type="email" id="emailRecuperacao" name="emailRecuperacao" placeholder="seu@email.com" required>
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <div class="mensagem-erro" id="erroEmailRecuperacao">Por favor, insira um e-mail válido</div>
+                </div>
+                <button type="submit" class="botao-login">
+                    <i class="fas fa-paper-plane"></i>
+                    Enviar Link de Recuperação
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Mensagens flutuantes -->
+    <div class="mensagem-flutuante mensagem-sucesso" id="mensagemSucesso">
+        <i class="fas fa-check-circle"></i> Login realizado com sucesso!
+    </div>
+    
+    <div class="mensagem-flutuante mensagem-erro-geral" id="mensagemErro">
+        <i class="fas fa-exclamation-circle"></i> Erro ao fazer login. Tente novamente.
+    </div>
+
+    <script>
+        // Elementos do DOM
+        const formLogin = document.getElementById('formLogin');
+        const emailInput = document.getElementById('email');
+        const senhaInput = document.getElementById('senha');
+        const botaoLogin = document.getElementById('botaoLogin');
+        const forcaSenha = document.getElementById('forcaSenha');
+        const erroEmail = document.getElementById('erroEmail');
+        const erroSenha = document.getElementById('erroSenha');
+        const modal = document.getElementById('modalRecuperacao');
+        const abrirModal = document.getElementById('abrirModal');
+        const fecharModal = document.getElementById('fecharModal');
+        const formRecuperacao = document.getElementById('formRecuperacao');
+        const mensagemSucesso = document.getElementById('mensagemSucesso');
+        const mensagemErro = document.getElementById('mensagemErro');
+        const linkCadastro = document.getElementById('linkCadastro');
+
+        // Validação de e-mail
+        function validarEmail(email) {
+            const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return regex.test(email);
+        }
+
+        // Validação de senha
+        function validarSenha(senha) {
+            return senha.length >= 6;
+        }
+
+        // Avaliar força da senha
+        function avaliarForcaSenha(senha) {
+            let forca = 0;
+            
+            // Comprimento mínimo
+            if (senha.length >= 6) forca += 1;
+            
+            // Contém números
+            if (/\d/.test(senha)) forca += 1;
+            
+            // Contém letras minúsculas e maiúsculas
+            if (/[a-z]/.test(senha) && /[A-Z]/.test(senha)) forca += 1;
+            
+            // Contém caracteres especiais
+            if (/[^a-zA-Z0-9]/.test(senha)) forca += 1;
+            
+            return forca;
+        }
+
+        // Atualizar indicador de força da senha
+        function atualizarForcaSenha(senha) {
+            const forca = avaliarForcaSenha(senha);
+            
+            forcaSenha.className = 'forca-senha';
+            
+            if (senha.length === 0) {
+                forcaSenha.style.width = '0%';
+            } else if (forca <= 1) {
+                forcaSenha.classList.add('fraca');
+            } else if (forca <= 2) {
+                forcaSenha.classList.add('media');
+            } else {
+                forcaSenha.classList.add('forte');
+            }
+        }
+
+        // Mostrar/ocultar mensagem de erro
+        function mostrarErro(input, elementoErro, mensagem) {
+            input.classList.add('invalido');
+            input.classList.remove('valido');
+            elementoErro.textContent = mensagem;
+            elementoErro.style.display = 'block';
+        }
+
+        function mostrarValido(input) {
+            input.classList.remove('invalido');
+            input.classList.add('valido');
+        }
+
+        function limparErro(input, elementoErro) {
+            input.classList.remove('invalido', 'valido');
+            elementoErro.style.display = 'none';
+        }
+
+        // Mostrar mensagem flutuante
+        function mostrarMensagem(mensagemElement, tempo = 3000) {
+            mensagemElement.classList.add('mostrar');
+            setTimeout(() => {
+                mensagemElement.classList.remove('mostrar');
+            }, tempo);
+        }
+
+        // Simular processo de login
+        function simularLogin(email, senha) {
+            return new Promise((resolve, reject) => {
+                // Simular uma requisição de API
+                setTimeout(() => {
+                    // Credenciais de exemplo para demonstração
+                    if (email === "usuario@exemplo.com" && senha === "senha123") {
+                        resolve({ success: true, message: "Login bem-sucedido!" });
+                    } else {
+                        reject({ success: false, message: "Credenciais inválidas. Tente novamente." });
+                    }
+                }, 1500);
+            });
+        }
+
+        // Event Listeners
+        emailInput.addEventListener('input', function() {
+            if (this.value.length === 0) {
+                limparErro(this, erroEmail);
+            } else if (validarEmail(this.value)) {
+                mostrarValido(this);
+                limparErro(this, erroEmail);
+            }
+        });
+
+        senhaInput.addEventListener('input', function() {
+            atualizarForcaSenha(this.value);
+            
+            if (this.value.length === 0) {
+                limparErro(this, erroSenha);
+            } else if (validarSenha(this.value)) {
+                mostrarValido(this);
+                limparErro(this, erroSenha);
+            }
+        });
+
+        formLogin.addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            let valido = true;
+            
+            // Validar email
+            if (!validarEmail(emailInput.value)) {
+                mostrarErro(emailInput, erroEmail, 'Por favor, insira um e-mail válido');
+                valido = false;
+            }
+            
+            // Validar senha
+            if (!validarSenha(senhaInput.value)) {
+                mostrarErro(senhaInput, erroSenha, 'A senha deve ter pelo menos 6 caracteres');
+                valido = false;
+            }
+            
+            if (valido) {
+                // Desabilitar botão e mostrar estado de carregamento
+                botaoLogin.disabled = true;
+                botaoLogin.classList.add('carregando');
+                
+                try {
+                    // Simular processo de login
+                    const resultado = await simularLogin(emailInput.value, senhaInput.value);
+                    
+                    // Login bem-sucedido
+                    mostrarMensagem(mensagemSucesso);
+                    
+                    // Redirecionar após um breve delay
+                    setTimeout(() => {
+                        alert(`Bem-vindo de volta! Redirecionando para a página inicial...`);
+                        // Em um cenário real, você redirecionaria para a página principal
+                        // window.location.href = 'inicio.html';
+                    }, 1000);
+                    
+                } catch (erro) {
+                    // Login falhou
+                    mostrarMensagem(mensagemErro);
+                    mostrarErro(emailInput, erroEmail, 'Credenciais inválidas');
+                    mostrarErro(senhaInput, erroSenha, 'Credenciais inválidas');
+                } finally {
+                    // Reativar botão
+                    botaoLogin.disabled = false;
+                    botaoLogin.classList.remove('carregando');
+                }
+            }
+        });
+
+        // Modal de recuperação de senha
+        abrirModal.addEventListener('click', function(e) {
+            e.preventDefault();
+            modal.style.display = 'flex';
+            setTimeout(() => {
+                modal.classList.add('mostrar');
+            }, 10);
+        });
+
+        fecharModal.addEventListener('click', function() {
+            modal.classList.remove('mostrar');
+            setTimeout(() => {
+                modal.style.display = 'none';
+            }, 300);
+        });
+
+        window.addEventListener('click', function(e) {
+            if (e.target === modal) {
+                modal.classList.remove('mostrar');
+                setTimeout(() => {
+                    modal.style.display = 'none';
+                }, 300);
+            }
+        });
+
+        formRecuperacao.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const emailRecuperacao = document.getElementById('emailRecuperacao');
+            const erroEmailRecuperacao = document.getElementById('erroEmailRecuperacao');
+            
+            if (!validarEmail(emailRecuperacao.value)) {
+                mostrarErro(emailRecuperacao, erroEmailRecuperacao, 'Por favor, insira um e-mail válido');
+            } else {
+                // Simular envio de e-mail de recuperação
+                alert(`Instruções de recuperação enviadas para: ${emailRecuperacao.value}`);
+                modal.classList.remove('mostrar');
+                setTimeout(() => {
+                    modal.style.display = 'none';
+                }, 300);
+                formRecuperacao.reset();
+            }
+        });
+
+        // Link para cadastro
+        linkCadastro.addEventListener('click', function(e) {
+            e.preventDefault();
+            alert('Redirecionando para página de cadastro...');
+            // Em um cenário real, você redirecionaria para a página de cadastro
+            // window.location.href = 'cadastro.html';
+        });
+
+        // Login social
+        const botoesSocial = document.querySelectorAll('.botao-social');
+        botoesSocial.forEach(botao => {
+            botao.addEventListener('click', function() {
+                const rede = this.classList.contains('google') ? 'Google' : 'Facebook';
+                alert(`Iniciando autenticação com ${rede}...`);
+                // Em um cenário real, você iniciaria o fluxo de OAuth
+            });
+        });
+    </script>
+</body>
+</html>

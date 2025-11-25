@@ -1,0 +1,115 @@
+:root {
+  --roxo: #7E66CC;
+  --rosa: #EBCFF0;
+  --fundo-busca: #E6EEF5;
+  --azul-claro: #E1F0F9;
+}
+
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background: white;
+}
+
+/* ---------- CABEÇALHO ---------- */
+.cabecalho {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 60px;
+}
+
+.logo img {
+  height: 45px;
+}
+
+.barra-pesquisa {
+  display: flex;
+  align-items: center;
+  background: var(--fundo-busca);
+  border-radius: 12px;
+  padding: 5px 15px;
+  box-shadow: 0 0 8px rgba(0,0,0,0.05);
+}
+
+.barra-pesquisa input {
+  border: none;
+  outline: none;
+  background: transparent;
+  font-size: 14px;
+  color: var(--roxo);
+  width: 220px;
+}
+
+.barra-pesquisa img {
+  height: 18px;
+  margin-left: 10px;
+}
+
+/* ---------- CONTEÚDO ---------- */
+.conteudo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 25px;
+}
+
+/* Livros em destaque */
+.livros-destaque {
+  display: flex;
+  align-items: flex-start;
+  gap: 25px;
+}
+
+.livro-principal img {
+  width: 150px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}
+
+.livros-laterais {
+  display: flex;
+  gap: 15px;
+}
+
+.livros-laterais img {
+  width: 90px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  transition: 0.3s;
+}
+
+.livros-laterais img:hover {
+  transform: scale(1.05);
+}
+
+/* Recomendações */
+.recomendacoes {
+  background: var(--azul-claro);
+  width: 100%;
+  margin-top: 35px;
+  padding: 20px 0;
+  text-align: center;
+  border-top: 2px solid #dceaf3;
+}
+
+.recomendacoes h2 {
+  color: var(--roxo);
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.bolinhas {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+.bolinhas div {
+  width: 40px;
+  height: 60px;
+  background: white;
+  border-radius: 50%;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}

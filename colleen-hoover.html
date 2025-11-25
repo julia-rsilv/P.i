@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Colleen Hoover - Winter Books</title>
+    <style>
+        /* Reset e estilos gerais */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        /* Cabeçalho */
+        .cabecalho {
+            background-color: #fff;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .cabecalho .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+        
+        .logo img {
+            height: 40px;
+        }
+        
+        .menu-principal ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        .menu-principal li {
+            margin-left: 25px;
+        }
+        
+        .menu-principal a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .menu-principal a:hover {
+            color: #8a2be2;
+        }
+        
+        .menu-principal a.ativo {
+            color: #8a2be2;
+            font-weight: 600;
+        }
+        
+        .icone-login img {
+            height: 24px;
+            cursor: pointer;
+        }
+        
+        /* Conteúdo principal */
+        .conteudo-principal {
+            padding: 40px 0;
+        }
+        
+        /* Seção do autor */
+        .secao-autor {
+            display: flex;
+            flex-wrap: wrap;
+            margin-bottom: 60px;
+            background-color: #fff;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .autor-imagem {
+            flex: 1;
+            min-width: 300px;
+            position: relative;
+        }
+        
+        .autor-imagem img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .autor-info {
+            flex: 2;
+            min-width: 300px;
+            padding: 40px;
+        }
+        
+        .autor-info h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            color: #2c3e50;
+        }
+        
+        .autor-nacionalidade {
+            display: inline-block;
+            background-color: #e6f7ff;
+            color: #1890ff;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+        }
+        
+        .autor-descricao {
+            margin-bottom: 25px;
+            font-size: 1.1rem;
+            color: #555;
+        }
+        
+        .autor-generos {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 25px;
+        }
+        
+        .genero-tag {
+            background-color: #f0f0f0;
+            padding: 5px 12px;
+            border-radius: 15px;
+            font-size: 0.85rem;
+        }
+        
+        .autor-estatisticas {
+            display: flex;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+        
+        .estatistica {
+            text-align: center;
+        }
+        
+        .estatistica-numero {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #8a2be2;
+        }
+        
+        .estatistica-label {
+            font-size: 0.9rem;
+            color: #777;
+        }
+        
+        /* Seção de obras */
+        .secao-obras {
+            margin-bottom: 60px;
+        }
+        
+        .titulo-secao {
+            font-size: 2rem;
+            margin-bottom: 30px;
+            color: #2c3e50;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .titulo-secao::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background-color: #8a2be2;
+        }
+        
+        .grid-obras {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        
+        .card-obra {
+            background-color: #fff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .card-obra:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .card-obra img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+        
+        .info-obra {
+            padding: 20px;
+        }
+        
+        .info-obra h3 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            color: #2c3e50;
+        }
+        
+        .info-obra p {
+            color: #777;
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+        }
+        
+        .botao-ver-detalhes {
+            display: inline-block;
+            background-color: #8a2be2;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: background-color 0.3s;
+        }
+        
+        .botao-ver-detalhes:hover {
+            background-color: #7a1fd1;
+        }
+        
+        /* Seção fenômeno BookTok */
+        .secao-fenomeno {
+            background-color: #fff;
+            padding: 40px;
+            border-radius: 10px;
+            margin-bottom: 60px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .fenomeno-conteudo {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            align-items: center;
+        }
+        
+        .fenomeno-texto {
+            flex: 2;
+            min-width: 300px;
+        }
+        
+        .fenomeno-imagem {
+            flex: 1;
+            min-width: 250px;
+        }
+        
+        .fenomeno-imagem img {
+            width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .fenomeno-lista {
+            margin-top: 20px;
+            padding-left: 20px;
+        }
+        
+        .fenomeno-lista li {
+            margin-bottom: 10px;
+        }
+        
+        /* Seção de citações */
+        .secao-citacoes {
+            background-color: #fff;
+            padding: 40px;
+            border-radius: 10px;
+            margin-bottom: 60px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .citacao {
+            font-style: italic;
+            font-size: 1.2rem;
+            text-align: center;
+            margin-bottom: 30px;
+            color: #555;
+            position: relative;
+            padding: 0 20px;
+        }
+        
+        .citacao::before, .citacao::after {
+            content: '"';
+            font-size: 3rem;
+            color: #e0e0e0;
+            position: absolute;
+        }
+        
+        .citacao::before {
+            top: -15px;
+            left: 0;
+        }
+        
+        .citacao::after {
+            bottom: -35px;
+            right: 0;
+        }
+        
+        .citacao-autor {
+            text-align: center;
+            font-weight: 600;
+            color: #8a2be2;
+        }
+        
+        /* Rodapé */
+        .rodape {
+            background-color: #8050ad; ;
+            color: #fff;
+            padding: 50px 0 20px;
+        }
+        
+        .conteudo-rodape {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin-bottom: 30px;
+        }
+        
+        .coluna-rodape {
+            flex: 1;
+            min-width: 250px;
+            margin-bottom: 30px;
+        }
+        
+        .coluna-rodape h3 {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            color: #fff;
+        }
+        
+        .coluna-rodape ul {
+            list-style: none;
+        }
+        
+        .coluna-rodape li {
+            margin-bottom: 10px;
+        }
+        
+        .coluna-rodape a {
+            color: #bdc3c7;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .coluna-rodape a:hover {
+            color: #fff;
+        }
+        
+        .campo-busca {
+            display: flex;
+            margin-top: 15px;
+        }
+        
+        .campo-busca input {
+            flex: 1;
+            padding: 10px;
+            border: none;
+            border-radius: 5px 0 0 5px;
+        }
+        
+        .botao-buscar {
+            background-color: #8a2be2;
+            color: white;
+            border: none;
+            padding: 0 15px;
+            border-radius: 0 5px 5px 0;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .botao-buscar:hover {
+            background-color: #7a1fd1;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #34495e;
+            color: #bdc3c7;
+            font-size: 0.9rem;
+        }
+        
+        /* Elementos decorativos */
+        .elementos-decorativos {
+            position: relative;
+            height: 0;
+        }
+        
+        .circulo-roxo, .circulo-rosa {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.1;
+            z-index: -1;
+        }
+        
+        .circulo-roxo {
+            width: 300px;
+            height: 300px;
+            background-color: #8a2be2;
+            top: -150px;
+            right: -100px;
+        }
+        
+        .circulo-rosa {
+            width: 200px;
+            height: 200px;
+            background-color: #ff69b4;
+            bottom: -100px;
+            left: -50px;
+        }
+        
+        /* Responsividade */
+        @media (max-width: 768px) {
+            .menu-principal ul {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .autor-info {
+                padding: 25px;
+            }
+            
+            .autor-info h1 {
+                font-size: 2rem;
+            }
+            
+            .secao-citacoes, .secao-fenomeno {
+                padding: 25px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="cabecalho">
+        <div class="container">
+            <div class="logo">
+                <a href="inicio.html">
+                    <img src="img/logos/winter.png" alt="Winter Books Logo">
+                </a>
+            </div>
+            
+            <nav class="menu-principal">
+                <ul>
+                    <li><a href="index.html">INÍCIO</a></li>
+                    <li><a href="autores.html" class="ativo">AUTORES</a></li>
+                    <li><a href="mais-lidos.html">MAIS LIDOS</a></li>
+                    <li><a href="educacionais.html">EDUCACIONAIS</a></li>
+                    <li><a href="generos.html">GÊNEROS</a></li>
+                </ul>
+            </nav>
+            
+            <div class="icone-login">
+                <a href="login.html">
+                    <img src="img/logos/login.png" alt="Login">
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main class="conteudo-principal">
+        <div class="elementos-decorativos">
+            <div class="circulo-roxo"></div>
+            <div class="circulo-rosa"></div>
+        </div>
+        
+        <section class="secao-autor">
+            <div class="autor-imagem">
+                <img src="img/autores/Colleen Hoover.jpg" alt="Colleen Hoover">
+            </div>
+            
+            <div class="autor-info">
+                <h1>Colleen Hoover</h1>
+                <div class="autor-nacionalidade">Estadunidense</div>
+                
+                <div class="autor-generos">
+                    <span class="genero-tag">Romance</span>
+                    <span class="genero-tag">New Adult</span>
+                    <span class="genero-tag">Drama</span>
+                    <span class="genero-tag">Romance Contemporâneo</span>
+                </div>
+                
+                <div class="autor-descricao">
+                    <p>Colleen Hoover é uma das autoras mais influentes e bem-sucedidas da literatura contemporânea, conhecida por seus romances emocionantes que exploram relacionamentos complexos, traumas e superação. Nascida em 1979 no Texas, começou sua carreira literária de forma independente em 2012 com "Slammed", alcançando rapidamente o sucesso através do boca a boca e das redes sociais.</p>
+                    <p>Hoover revolucionou o mercado editorial com sua abordagem única de conectar-se diretamente com os leitores através das redes sociais. Sua obra "É Assim que Acaba" se tornou um fenômeno global, permanecendo por mais de 100 semanas na lista de best-sellers do The New York Times e inspirando o movimento #BookTok que transformou a forma como os jovens consomem literatura.</p>
+                </div>
+                
+                <div class="autor-estatisticas">
+                    <div class="estatistica">
+                        <div class="estatistica-numero">25+</div>
+                        <div class="estatistica-label">Livros Publicados</div>
+                    </div>
+                    <div class="estatistica">
+                        <div class="estatistica-numero">20M+</div>
+                        <div class="estatistica-label">Livros Vendidos</div>
+                    </div>
+                    <div class="estatistica">
+                        <div class="estatistica-numero">30+</div>
+                        <div class="estatistica-label">Idiomas</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section class="secao-obras">
+            <div class="container">
+                <h2 class="titulo-secao">Obras Principais</h2>
+                
+                <div class="grid-obras">
+                    <!-- Obra 1 -->
+                    <div class="card-obra">
+                        <img src="img/livros/romance/É Assim que Acaba.jpg" alt="É Assim que Acaba">
+                        <div class="info-obra">
+                            <h3>É Assim que Acaba</h3>
+                            <p>Publicado em 2016</p>
+                            <p>Um romance emocionante sobre relacionamentos abusivos e a jornada de reconstrução.</p>
+                            <a href="e-assim-que-acaba.html" class="botao-ver-detalhes">Ver Detalhes</a>
+                        </div>
+                    </div>
+                    
+                    <!-- Obra 2 -->
+                    <div class="card-obra">
+                        <img src="img/livros/romance/Verity.jpeg" alt="Verity">
+                        <div class="info-obra">
+                            <h3>Verity</h3>
+                            <p>Publicado em 2018</p>
+                            <p>Thriller psicológico que diverge do estilo habitual da autora.</p>
+                            <a href="verity.html" class="botao-ver-detalhes">Ver Detalhes</a>
+                        </div>
+                    </div>
+                    
+                    <!-- Obra 3 -->
+                    <div class="card-obra">
+                        <img src="img/livros/romance/Todas as Suas Imperfeições.jpeg" alt="Todas as Suas Imperfeições">
+                        <div class="info-obra">
+                            <h3>Todas as Suas Imperfeições</h3>
+                            <p>Publicado em 2018</p>
+                            <p>Uma história sobre amor, perdas e segredos em um casamento.</p>
+                            <a href="todas-as-suas-imperfeicoes.html" class="botao-ver-detalhes">Ver Detalhes</a>
+                        </div>
+                    </div>
+                    
+                    <!-- Obra 4 -->
+                    <div class="card-obra">
+                        <img src="img/livros/romance/e assim que começa.jpeg" alt="Até Você">
+                        <div class="info-obra">
+                            <h3>Até Você</h3>
+                            <p>Publicado em 2022</p>
+                            <p>Continuação do best-seller "É Assim que Acaba".</p>
+                            <a href="ate-voce.html" class="botao-ver-detalhes">Ver Detalhes</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+    
+    <footer class="rodape">
+        <div class="container">
+            <div class="conteudo-rodape">
+                <div class="coluna-rodape">
+                    <h3>Winter Books</h3>
+                    <p>Sua plataforma para descobrir, avaliar e compartilhar livros.</p>
+                </div>
+                
+                <div class="coluna-rodape">
+                    <h3>Suporte</h3>
+                    <ul>
+                        <li><a href="ajuda.html">Ajuda</a></li>
+                        <li><a href="contato.html">Contato</a></li>
+                        <li><a href="politica.html">Política de Privacidade</a></li>
+                        <li><a href="termos.html">Termos de Uso</a></li>
+                    </ul>
+                </div>
+                
+                <div class="coluna-rodape">
+                    <h3>Newsletter</h3>
+                    <p>Inscreva-se para receber novidades.</p>
+                    <div class="campo-busca">
+                        <input type="email" placeholder="Seu e-mail">
+                        <button class="botao-buscar">Inscrever</button>
+                    </div>
+                </div>
+            </div>
+            
+           
+        </div>
+    </footer>
+</body>
+</html>
